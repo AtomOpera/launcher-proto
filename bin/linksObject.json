@@ -1,0 +1,26 @@
+[ 
+  {
+    "id": 1,
+    "list": [
+        "https://www.gmail.com", 
+        "https://news.google.co.uk",
+        "https://www.9gag.com",
+        "1"
+      ]
+  },
+  {
+    "id": 2,
+    "list": [
+        "https://codesandbox.io/", 
+        "https://www.codewars.com/",
+        "https://www.thisistoolongtofithere.com/",
+        "2"
+      ]
+  },
+  {
+    "id": 3,
+    "list": [
+        "3"
+      ]
+  }
+]
