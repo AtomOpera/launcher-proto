@@ -131,10 +131,36 @@ function App() {
 
   };
 
+  var [date,setDate] = useState(new Date());
+    
+  useEffect(() => {
+      var timer = setInterval(()=>setDate(new Date()), 1000 )
+      return function cleanup() {
+          clearInterval(timer)
+      }
+  
+  });
+
+  const locale = 'en';
+  // const today = new Date();
+
+  const day = date.toLocaleDateString(locale, { weekday: 'long' });
+  const myDate = `${day}, ${date.getDate()} ${date.toLocaleDateString(locale, { month: 'long' })}\n\n`;
+
+  const hour = date.getHours();
+  const wish = `Good ${(hour < 12 && 'Morning') || (hour < 17 && 'Afternoon') || 'Evening'}\n\n `;
+
+  const time = date.toLocaleTimeString({ hour: 'numeric', minute: 'numeric', second: 'numeric' });
 
   return (
     <>
       <MainBody>
+        <h2 style={{textAlign: "center"}}>
+          {wish}  
+        </h2>
+        <h2 style={{textAlign: "center"}}>
+          {myDate} {time}
+        </h2>
         <DragDropContext
           onDragEnd={onDragEnd}
 

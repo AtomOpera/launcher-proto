@@ -35,12 +35,12 @@ const initialData = {
     'column-3': {
       id: 'column-3',
       title: 'Column-3',
-      iconIds: ['icon-11', 'icon-12', 'icon-13', 'icon-14'],
+      iconIds: ['icon-11', 'icon-12', 'icon-13', 'icon-14', 'icon-15'],
     },
     'column-4': {
       id: 'column-4',
       title: 'Column-4',
-      iconIds: ['icon-15', 'icon-16', 'icon-17', 'icon-18', 'icon-19', 'icon-20'],
+      iconIds: ['icon-16', 'icon-17', 'icon-18', 'icon-19', 'icon-20'],
     },
   },
   // Facilitate reordering of the columns
