@@ -17,9 +17,11 @@ const MainBody = styled.div`
   position: absolute;
   left: 50%;
   margin-left: -175px;
-  width: 350px;
+  width: 340px;
+  background-color: white;
+  padding: 5px;
 
-  border-radius: 2px;
+  border-radius: 20px;
 
   /* display: flex;
   flex-direction: column; 
@@ -152,6 +154,8 @@ function App() {
 
   const time = date.toLocaleTimeString({ hour: 'numeric', minute: 'numeric', second: 'numeric' });
 
+  document.body.style = 'background: black;';
+
   return (
     <>
       <MainBody>
@@ -192,9 +196,33 @@ function App() {
             
           </Droppable>
         </DragDropContext>
+        <br />
       </MainBody>
+      <button onClick={() => {save();}}>write!</button>
     </>
   );
 };
+
+function save() {
+  const addPP = async () => {
+    const bodyData = `{}`;
+    fetch('https://vwxjf.sse.codesandbox.io/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-16',
+      },
+      body: bodyData,
+    })
+      .then((response) => {
+        console.log(
+          `Response: ${response.status} ${response.statusText}`
+        );
+        return response.text();
+      })
+      .then((text) => console.log(text))
+      .catch((err) => console.error(err));
+  };
+  addPP();
+}
 
 ReactDOM.render(<App />, document.getElementById('root'));
