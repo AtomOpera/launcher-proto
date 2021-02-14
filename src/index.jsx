@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import initialData from './initial-data';
 import Column from './column';
+import "./styles.css";
 
 const Container = styled.div`
   display: flex;
@@ -11,15 +12,46 @@ const Container = styled.div`
   justify-content: space-around;
 `;
 
+const Outer = styled.div`
+  // border: 1px solid red;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  // background-color: black;
+`;
+
+const Inner = styled.div`
+  width: 330px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  // margin: 5px;
+`;
+
 const MainBody = styled.div`
+  margin: 0 auto;
+  width: 330px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+`;
+
+const MainBody2 = styled.div`
   /* border: 1px solid lightgrey; */
   
-  position: absolute;
+  /* position: absolute; */
+  border-bottom: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+
   left: 50%;
   margin-left: -175px;
+  
   width: 340px;
   background-color: white;
   padding: 5px;
+  
 
   border-radius: 20px;
 
@@ -154,11 +186,16 @@ function App() {
 
   const time = date.toLocaleTimeString({ hour: 'numeric', minute: 'numeric', second: 'numeric' });
 
-  document.body.style = 'background: black;';
+  // document.body.style = 'background: black;';
 
   return (
     <>
-      <MainBody>
+      <button onClick={() => {save();}}>write!</button>
+      <br />
+      <br />
+
+      <Outer><Inner>
+      {/* <MainBody> */}
         <h2 style={{textAlign: "center"}}>
           {wish}  
         </h2>
@@ -197,16 +234,17 @@ function App() {
           </Droppable>
         </DragDropContext>
         <br />
-      </MainBody>
-      <button onClick={() => {save();}}>write!</button>
+        </Inner></Outer>
+      {/* </MainBody> */}
+      
     </>
   );
 };
 
 function save() {
   const addPP = async () => {
-    const bodyData = `{}`;
-    fetch('https://vwxjf.sse.codesandbox.io/', {
+    const bodyData = "lalala";
+    fetch('https://vwxjf.sse.codesandbox.io/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-16',
@@ -222,6 +260,14 @@ function save() {
       .then((text) => console.log(text))
       .catch((err) => console.error(err));
   };
+
+  const fetchito = async() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((e) => console.error(e));
+  };
+  // fetchito();
   addPP();
 }
 
