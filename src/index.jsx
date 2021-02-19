@@ -63,6 +63,19 @@ const MainBody2 = styled.div`
 
 function App() {
   const [data, setData] = useState(initialData);
+  //console.log(load());
+  useEffect(() => {
+    fetch("https://express-simple-save-file.herokuapp.com/getData")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res); 
+        if (res.columns) {
+          setData(res);
+        }
+      })
+      .catch((e) => console.error(e));
+  }, []);
+  
   let newData = data;
 
   function onTitleEdited(column, newValue) {
@@ -190,7 +203,7 @@ function App() {
 
   return (
     <>
-      <button onClick={() => {save();}}>write!</button>
+      <button onClick={() => {save(data);}}>write!</button>
       <br />
       <br />
 
@@ -241,16 +254,39 @@ function App() {
   );
 };
 
-function save() {
+async function load() {
+  return async() => {
+    fetch("https://express-simple-save-file.herokuapp.com/getData")
+      .then((res) => res.json())
+      .then((res) => { console.log(res); return res;})
+      .catch((e) => console.error(e));
+  };
+
+  //return fetchItNow;
+};
+
+function save(data) {
+  //https://express-simple-save-file.herokuapp.com/new
+  //https://vwxjf.sse.codesandbox.io/new
   const addPP = async () => {
-    const bodyData = "lalala";
-    fetch('https://vwxjf.sse.codesandbox.io/new', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-16',
-      },
-      body: bodyData,
+    fetch('https://express-simple-save-file.herokuapp.com/new', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     })
+
+    // async () => {
+    //   const rawResponse = await fetch('https://httpbin.org/post', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({a: 1, b: 'Textual content'})
+    //   });
       .then((response) => {
         console.log(
           `Response: ${response.status} ${response.statusText}`
