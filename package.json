@@ -1,9 +1,13 @@
 {
   "name": "three-column-launcher-v09",
   "version": "1.0.0",
-  "description": "",
+  "description": "Created with CodeSandbox",
   "keywords": [],
   "main": "src/index.jsx",
+  "engines": {
+    "npm": "6.13.4",
+    "node": "12.16.1"
+  },
   "dependencies": {
     "@atlaskit/inline-edit": "11.0.11",
     "@material-ui/core": "4.11.3",
@@ -31,5 +35,15 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomOpera/launcher-proto.git"
+  },
+  "author": "Abraham Cabrera Valdivia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AtomOpera/launcher-proto/issues"
+  },
+  "homepage": "https://github.com/AtomOpera/launcher-proto#readme"
 }
