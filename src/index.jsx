@@ -65,9 +65,19 @@ function App() {
   const [data, setData] = useState(initialData);
   //console.log(load());
   useEffect(() => {
-    fetch("https://express-simple-save-file.herokuapp.com/getData")
+    //https://www.npoint.io/docs/b60564159764a1d3e527
+    fetch("https://api.jsonbin.io/b/6031975ad677700867e5b3ce", {
+      // fetch('https://express-simple-save-file.herokuapp.com/new', {
+          method: 'GET',
+          headers: {
+            'versioning': false,
+            'secret-key': '$2b$10$.HB9A2qWS4wMb21yc9K5bOKCzGsgIISm7CAU7/H0o9W11mInbfEDS'
+          }
+      })
+    //fetch("https://express-simple-save-file.herokuapp.com/getData")
       .then((res) => res.json())
       .then((res) => {
+        // console.log(res.json());
         console.log(res); 
         if (res.columns) {
           setData(res);
@@ -248,6 +258,7 @@ function App() {
         </DragDropContext>
         <br />
         </Inner></Outer>
+      <div style={{color: "white"}}>{localStorage.getItem('data')}</div>
       {/* </MainBody> */}
       
     </>
@@ -268,14 +279,22 @@ async function load() {
 function save(data) {
   //https://express-simple-save-file.herokuapp.com/new
   //https://vwxjf.sse.codesandbox.io/new
+  const saveToLocalStorage = async () => {
+    localStorage.setItem('data', JSON.stringify(data));
+  };
   const addPP = async () => {
-    fetch('https://express-simple-save-file.herokuapp.com/new', {
-        method: 'POST',
+    console.log(data);
+    //https://www.npoint.io/docs/b60564159764a1d3e527
+    fetch("https://api.jsonbin.io/b/6031975ad677700867e5b3ce", {
+    // fetch('https://express-simple-save-file.herokuapp.com/new', {
+        method: 'PUT',
         headers: {
-          'Accept': 'application/json',
+          'secret-key': '$2b$10$.HB9A2qWS4wMb21yc9K5bOKCzGsgIISm7CAU7/H0o9W11mInbfEDS',
+          'versioning': false,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
+        //body: JSON.stringify(data)
     })
 
     // async () => {
@@ -305,6 +324,7 @@ function save(data) {
   };
   // fetchito();
   addPP();
+  saveToLocalStorage();
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
