@@ -62,7 +62,7 @@ const MainBody2 = styled.div`
 `;
 
 function App() {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(null); // initialData);
   //console.log(load());
   useEffect(() => {
     //https://www.npoint.io/docs/b60564159764a1d3e527
@@ -225,37 +225,43 @@ function App() {
         <h2 style={{textAlign: "center"}}>
           {myDate} {time}
         </h2>
-        <DragDropContext
-          onDragEnd={onDragEnd}
+        {!data && (
+          <div> Loading...</div>
+        )}
+        {data && (
+          <DragDropContext
+            onDragEnd={onDragEnd}
 
-        >
-          <Droppable 
-            droppableId="all-columns" 
-            direction="horizontal" 
-            type="column"
           >
-            {(provided) => (
-              <Container
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {data.columnOrder.map((elem, index) => (
-                  <Column 
-                    key={data.columns[elem].id}
-                    title={data.columns[elem].title} 
-                    column={data.columns[elem]}
-                    icons={data.columns[elem].iconIds.map(iconId => data.icons[iconId])}
-                    index={index}
-                    onTitleEdited={onTitleEdited}
-                  />
-                ))
-                }
-                {provided.placeholder}
-              </Container>
-            )}
-            
-          </Droppable>
-        </DragDropContext>
+            <Droppable 
+              droppableId="all-columns" 
+              direction="horizontal" 
+              type="column"
+            >
+              
+              {(provided) => (
+                <Container
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {data.columnOrder.map((elem, index) => (
+                    <Column 
+                      key={data.columns[elem].id}
+                      title={data.columns[elem].title} 
+                      column={data.columns[elem]}
+                      icons={data.columns[elem].iconIds.map(iconId => data.icons[iconId])}
+                      index={index}
+                      onTitleEdited={onTitleEdited}
+                    />
+                  ))
+                  }
+                  {provided.placeholder}
+                </Container>
+              )}
+              
+            </Droppable>
+          </DragDropContext>
+        )}
         <br />
         </Inner></Outer>
       <div style={{color: "white"}}>{localStorage.getItem('data')}</div>
