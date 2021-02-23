@@ -92,6 +92,7 @@ function App() {
     newData.columns[column.id].title = newValue;
     console.log(JSON.stringify(newData.columns));
     setData(newData);
+    save(newData);
     return;
   };
 
@@ -129,6 +130,7 @@ function App() {
       };
 
       setData(newData);
+      save(newData);
       //console.log(newData.columnOrder);
       return;
     }
@@ -156,6 +158,7 @@ function App() {
       };
 
       setData(newData);
+      save(newData);
       return;
     }
     
@@ -184,6 +187,7 @@ function App() {
     };
 
     setData(newData);
+    save(newData);
     return;
 
   };
