@@ -7,6 +7,17 @@ const dev=false;
 /* border: ${highlight ? '1px solid ': '0px'}; */
 /* box-shadow: ${highlight ? '0 0px 8px 0 grey': ''}; */
 
+const NewWindowBox = styled.a`
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  width: 10px;
+  height: 10px;
+  background-color: orange;
+  border-radius: 4px;
+  margin-right: 8px;
+`;
+
 const AppIcon = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,6 +42,7 @@ const AppIcon = styled.div`
 `;
 
 const Container = styled.div`
+  // border: 1px solid lightgrey;
   /* background-image: linear-gradient(#dde, #aab);
   border-radius: 9px;
   width: 60px;
@@ -78,6 +90,7 @@ const Handle = styled.div`
 export default function Avatar(props) {
   const [data, setData] = useState('');
   const [highlight, setHighlight] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   function domainName(url){
     const cleanUrl = url.replace('http://', '').replace('https://', '').replace('www.', '');
@@ -114,7 +127,9 @@ export default function Avatar(props) {
             }
           >  */}
         {/* <Handle {...props.provided.dragHandleProps}/> */}
+        
         <AppIcon>  
+        {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
         </AppIcon> 
         {" "}
