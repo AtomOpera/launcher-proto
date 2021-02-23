@@ -217,7 +217,7 @@ function App() {
 
   return (
     <>
-      <button onClick={() => {save(data);}}>write!</button>
+      {/* <button onClick={() => {save(data);}}>write!</button> */}
       <br />
       <br />
 
