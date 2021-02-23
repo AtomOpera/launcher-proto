@@ -22,15 +22,15 @@ const Container = styled.div`
 
 const NewWindowBox = styled.div`
   position: fixed;
-  margin-left: 8px;
-  margin-top: 4px;
+  margin-left: 5px;
+  margin-top: -5px;
   //margin-left: 40px;
   //margin-top: -50px;
   // left: 10%;
   // top: 10%;
   width: 12px;
   height: 12px;
-  background-color: grey;
+  //background-color: grey;
   border-radius: 4px;
   //margin-right: 8px;
 `;
@@ -64,7 +64,12 @@ export default function Icon(props) {
           {/* <Handle {...provided.dragHandleProps}/> */}
           {isShown &&
             <a href={props.icon.content} target="_blank"><NewWindowBox>
-              
+              <svg style={{width:"24px", height:"24px", viewBox:"0 0 24 24", style:"cursor:pointer"}}>
+                <g style={{strokeWidth:"2.1", stroke:"#666", fill:"none", strokeLinecap:"round", strokeLinejoin:"round"}}>
+                  <polyline points="17 13.5 17 19.5 5 19.5 5 7.5 11 7.5"></polyline>
+                  <path d="M14,4.5 L20,4.5 L20,10.5 M20,4.5 L11,13.5"></path>
+                </g>
+              </svg>
               </NewWindowBox></a>
           }
           <Avatar icon={props.icon} provided={provided}/>
