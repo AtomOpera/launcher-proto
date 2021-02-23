@@ -268,7 +268,7 @@ function App() {
         )}
         <br />
         </Inner></Outer>
-      <div style={{color: "white"}}>{localStorage.getItem('data')}</div>
+      {/* <div style={{color: "white"}}>{localStorage.getItem('data')}</div> */}
       {/* </MainBody> */}
       
     </>
@@ -334,7 +334,7 @@ function save(data) {
   };
   // fetchito();
   addPP();
-  saveToLocalStorage();
+  // saveToLocalStorage();
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
