@@ -63,7 +63,9 @@ export default function Icon(props) {
         >
           {/* <Handle {...provided.dragHandleProps}/> */}
           {isShown &&
-            <a href={props.icon.content} target="_blank"><NewWindowBox></NewWindowBox></a>
+            <a href={props.icon.content} target="_blank"><NewWindowBox>
+              
+              </NewWindowBox></a>
           }
           <Avatar icon={props.icon} provided={provided}/>
           {/* {domainName(props.icon.content).toUpperCase()} */}
