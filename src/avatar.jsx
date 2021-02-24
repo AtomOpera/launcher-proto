@@ -147,7 +147,7 @@ export default function Avatar(props) {
           >  */}
         
         
-        <AppIcon href={props.icon.content} >  
+        <AppIcon href={props.icon.content} target="blank">  
         {/* <NewWindowBox {...props.provided.dragHandleProps}/> */}
         {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
