@@ -62,7 +62,7 @@ export default function Icon(props) {
           isDragging={snapshot.isDragging}
         >
           {/* <Handle {...provided.dragHandleProps}/> */}
-          {isShown &&
+          {/* {isShown &&
             <a href={props.icon.content} target="_blank"><NewWindowBox>
               <svg style={{width:"24px", height:"24px", viewBox:"0 0 24 24", style:"cursor:pointer"}}>
                 <g style={{strokeWidth:"2.1", stroke:"#666", fill:"none", strokeLinecap:"round", strokeLinejoin:"round"}}>
@@ -71,7 +71,7 @@ export default function Icon(props) {
                 </g>
               </svg>
               </NewWindowBox></a>
-          }
+          } */}
           <Avatar icon={props.icon} provided={provided}/>
           {/* {domainName(props.icon.content).toUpperCase()} */}
         </Container>

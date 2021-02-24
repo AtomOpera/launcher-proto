@@ -41,7 +41,7 @@ const AppIcon = styled.div`
   height: 50px;
 `;
 
-const Container = styled.div`
+const Container = styled.a`
   // border: 1px solid lightgrey;
   /* background-image: linear-gradient(#dde, #aab);
   border-radius: 9px;
@@ -104,19 +104,21 @@ export default function Avatar(props) {
 
   return (
     <Container 
-      {...props.provided.dragHandleProps}
+      // {...props.provided.dragHandleProps}
       href={props.icon.content} 
       key={props.icon.content}
       // onMouseEnter={()=>{setHighlight(true)}}
       // onMouseLeave={()=>{setHighlight(false)}}
+      target="blank"
       onClick={
         (event)=> {
-          window.open(`${props.icon.content}`, "_blank");
+          // window.open(`${props.icon.content}`, "_blank");
           event.preventDefault();
         }
       }
       style={{cursor:"pointer"}}
     >
+      {/* {JSON.stringify(props.provided.dragHandleProps)} */}
       {/* <a href={props.icon.content} 
             key={props.icon.content}
             onClick={
