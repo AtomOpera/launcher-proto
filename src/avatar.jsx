@@ -9,13 +9,17 @@ const dev=false;
 
 const NewWindowBox = styled.a`
   position: fixed;
-  left: 10%;
-  top: 10%;
-  width: 10px;
-  height: 10px;
-  background-color: orange;
+  margin-left: -30px;
+  margin-top: -30px;
+  //margin-left: 40px;
+  //margin-top: -50px;
+  // left: 10%;
+  // top: 10%;
+  width: 12px;
+  height: 12px;
+  background-color: lightgrey;
   border-radius: 4px;
-  margin-right: 8px;
+  //margin-right: 8px;
 `;
 
 const AppIcon = styled.div`
@@ -86,6 +90,8 @@ const Handle = styled.div`
   // margin-right: 8px;
 `;
 
+const Wrapper = styled.a`text-decoration: none;`;
+
 
 export default function Avatar(props) {
   const [data, setData] = useState('');
@@ -103,19 +109,21 @@ export default function Avatar(props) {
 
 
   return (
+    <Wrapper href={props.icon.content} target="blank">
     <Container 
-      // {...props.provided.dragHandleProps}
-      href={props.icon.content} 
-      key={props.icon.content}
-      // onMouseEnter={()=>{setHighlight(true)}}
-      // onMouseLeave={()=>{setHighlight(false)}}
-      target="blank"
       onClick={
         (event)=> {
           // window.open(`${props.icon.content}`, "_blank");
           event.preventDefault();
         }
       }
+      
+       
+      key={props.icon.content}
+      // onMouseEnter={()=>{setHighlight(true)}}
+      // onMouseLeave={()=>{setHighlight(false)}}
+      
+      
       style={{cursor:"pointer"}}
     >
       {/* {JSON.stringify(props.provided.dragHandleProps)} */}
@@ -128,9 +136,10 @@ export default function Avatar(props) {
               }
             }
           >  */}
-        {/* <Handle {...props.provided.dragHandleProps}/> */}
         
-        <AppIcon>  
+        
+        <AppIcon {...props.provided.dragHandleProps}>  
+        <NewWindowBox {...props.provided.dragHandleProps}/>
         {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
         </AppIcon> 
@@ -138,5 +147,6 @@ export default function Avatar(props) {
         <Name>{domainName(props.icon.content).toUpperCase()}</Name>
       {/* </a> */}
     </Container>
+    </Wrapper>
   );
 }
