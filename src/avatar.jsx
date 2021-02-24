@@ -22,7 +22,7 @@ const NewWindowBox = styled.a`
   //margin-right: 8px;
 `;
 
-const AppIcon = styled.div`
+const AppIcon = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,7 +58,7 @@ const Container = styled.a`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  // text-decoration: none;
 `;
 
 const Name = styled.div`
@@ -117,7 +117,7 @@ export default function Avatar(props) {
     // <Wrapper href={props.icon.content} target="blank">
     <Container 
       onMouseDown={handleOnClick}
-      href={props.icon.content} target="blank"
+      
       // onClick={
       //   (event)=> {
       //     // window.open(`${props.icon.content}`, "_blank");
@@ -146,7 +146,7 @@ export default function Avatar(props) {
           >  */}
         
         
-        <AppIcon {...props.provided.dragHandleProps}>  
+        <AppIcon href={props.icon.content} target="blank" {...props.provided.dragHandleProps}>  
         {/* <NewWindowBox {...props.provided.dragHandleProps}/> */}
         {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
