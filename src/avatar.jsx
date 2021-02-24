@@ -58,7 +58,7 @@ const Container = styled.a`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // text-decoration: none;
+  text-decoration: none;
 `;
 
 const Name = styled.div`
@@ -68,7 +68,7 @@ const Name = styled.div`
   /* margin-top: -15px; */
 
   color:black;
-  font-size:8px;
+  font-size:9px;
   padding:5px 5px 5px 5px;
   display:block;
   text-transform:uppercase;
@@ -76,7 +76,7 @@ const Name = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   font-family:'Josefin Sans';
-  letter-spacing:0.5px;
+  //letter-spacing:0.5px;
 `;
 
 
@@ -117,6 +117,7 @@ export default function Avatar(props) {
     // <Wrapper href={props.icon.content} target="blank">
     <Container 
       onMouseDown={handleOnClick}
+      href={props.icon.content} target="blank" {...props.provided.dragHandleProps} style={{cursor:"pointer", textDecoration: "none"}}
       
       // onClick={
       //   (event)=> {
@@ -146,7 +147,7 @@ export default function Avatar(props) {
           >  */}
         
         
-        <AppIcon href={props.icon.content} target="blank" {...props.provided.dragHandleProps} style={{cursor:"pointer"}}>  
+        <AppIcon href={props.icon.content} >  
         {/* <NewWindowBox {...props.provided.dragHandleProps}/> */}
         {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
