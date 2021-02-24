@@ -107,16 +107,24 @@ export default function Avatar(props) {
 
   const getUrlIcon = "https://s2.googleusercontent.com/s2/favicons?domain_url=";
 
+  const handleOnClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  }     
+
 
   return (
-    <Wrapper href={props.icon.content} target="blank">
+    // <Wrapper href={props.icon.content} target="blank">
     <Container 
-      onClick={
-        (event)=> {
-          // window.open(`${props.icon.content}`, "_blank");
-          event.preventDefault();
-        }
-      }
+      onMouseDown={handleOnClick}
+      href={props.icon.content} target="blank"
+      // onClick={
+      //   (event)=> {
+      //     // window.open(`${props.icon.content}`, "_blank");
+      //     event.blur();
+      //     event.preventDefault();
+      //   }
+      // }
       
        
       key={props.icon.content}
@@ -139,7 +147,7 @@ export default function Avatar(props) {
         
         
         <AppIcon {...props.provided.dragHandleProps}>  
-        <NewWindowBox {...props.provided.dragHandleProps}/>
+        {/* <NewWindowBox {...props.provided.dragHandleProps}/> */}
         {/* <NewWindowBox /> */}
           <img src={getUrlIcon + props.icon.content} alt={props.icon.content} />
         </AppIcon> 
@@ -147,6 +155,6 @@ export default function Avatar(props) {
         <Name>{domainName(props.icon.content).toUpperCase()}</Name>
       {/* </a> */}
     </Container>
-    </Wrapper>
+    // </Wrapper>
   );
 }
