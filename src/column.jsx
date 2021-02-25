@@ -91,12 +91,23 @@ export default function Column(props) {
             type="icon"
           >
             {(provided, snapshot) => (
+              
               <IconList
                 ref={provided.innerRef}
                 {...provided.droppableProps}
                 isDraggingOver={snapshot.isDraggingOver}
               >
+                {/* <button 
+                  style={{
+                    textAlign: "center",
+                    margin: "0",
+                    //position: "absolute",
+                    left: "50%"
+                  }}
+                  onClick={() => {}}
+                >+</button> */}
                 {props.icons.map((icon, index) =>
+
                   <Icon 
                     key={icon.id} 
                     icon={icon} 

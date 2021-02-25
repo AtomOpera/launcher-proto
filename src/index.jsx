@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import initialData from './initial-data';
 import Column from './column';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
 import "./styles.css";
 
 const Container = styled.div`
@@ -61,8 +63,39 @@ const MainBody2 = styled.div`
   align-items: center; */
 `;
 
+function SimpleDialog(props) {
+  // const classes = useStyles();
+  const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = value => {
+    onClose(value);
+  };
+
+  return (
+    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
+      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <div>Bla bla bla</div>
+    </Dialog>
+  );
+}
+
 function App() {
   const [data, setData] = useState(null); // initialData);
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState("blablabla");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = value => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
   //console.log(load());
   useEffect(() => {
     //https://www.npoint.io/docs/b60564159764a1d3e527
@@ -215,6 +248,15 @@ function App() {
 
   // document.body.style = 'background: black;';
 
+  function handleOnClick() {
+    // newData.columns[column.id].title = newValue;
+    // console.log(JSON.stringify(newData.columns));
+    // setData(newData);
+    // save(newData);
+    return;
+  };
+  
+
   return (
     <>
       {/* <button onClick={() => {save(data);}}>write!</button> */}
@@ -236,6 +278,29 @@ function App() {
           <div> Loading...</div>
         )}
         {data && (
+          <div>
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+
+              <button onClick={handleClickOpen}>
+                Open simple dialog
+              </button>
+              <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+              <button 
+                style={{
+                  textAlign: "center",
+                  margin: "0",
+                  //position: "absolute",
+                  left: "50%"
+                }}
+                onClick={handleOnClick}
+              >+</button>
+            </div>
+
           <DragDropContext
             onDragEnd={onDragEnd}
 
@@ -268,6 +333,7 @@ function App() {
               
             </Droppable>
           </DragDropContext>
+          </div>
         )}
         <br />
         </Inner></Outer>
