@@ -70,11 +70,11 @@ export default function Column(props) {
           ref={provided.innerRef}
         >
           <div {...provided.dragHandleProps}>
-          {/* <InlineEditExample
+          <InlineEditExample
             onTitleEdited={props.onTitleEdited}
             column={props.column}
             dragHandleProps={provided.dragHandleProps}
-          /> */}
+          />
           </div>
           {/* {editMode 
           ? <input
